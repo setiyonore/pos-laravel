@@ -13,4 +13,9 @@ class Profit extends Model
         'transaction_id',
         'total',
     ];
+
+    public function transaction()
+    {
+        return $this->belongsTo(Transaction::class);
+    }
 }
