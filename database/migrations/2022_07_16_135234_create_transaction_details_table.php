@@ -20,11 +20,13 @@ return new class extends Migration
             $table->integer('qty');
             $table->bigInteger('price');
             $table->timestamps();
+
+            //relationship transactions
+            $table->foreign('transaction_id')->references('id')->on('transactions');
+
+            //relationship products
+            $table->foreign('product_id')->references('id')->on('products');
         });
-        //relationship transactions
-        $table->foreign('transaction_id')->references('id')->on('transactions');
-        //relationship products
-        $table->foreign('product_id')->references('id')->on('products');
     }
 
     /**

@@ -18,18 +18,18 @@ return new class extends Migration
             $table->unsignedBigInteger('cashier_id');
             $table->unsignedBigInteger('customer_id')->nullable();
             $table->string('invoice');
-            $table->biginteger('cash');
-            $table->biginteger('change');
-            $table->biginteger('discount');
-            $table->biginteger('grand_total');
+            $table->bigInteger('cash');
+            $table->bigInteger('change');
+            $table->bigInteger('discount');
+            $table->bigInteger('grand_total');
             $table->timestamps();
+
+            //relationship users
+            $table->foreign('cashier_id')->references('id')->on('users');
+
+            //relationship customers
+            $table->foreign('customer_id')->references('id')->on('customers');
         });
-
-        //relationship users
-        $table->foreign('cashier_id')->references('id')->on('users');
-
-        //relationship customers
-        $table->foreign('customer_id')->references('id')->on('customers');
     }
 
     /**

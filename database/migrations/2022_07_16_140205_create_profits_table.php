@@ -18,9 +18,10 @@ return new class extends Migration
             $table->unsignedBigInteger('transaction_id');
             $table->bigInteger('total');
             $table->timestamps();
+
+            //relationship transactions
+            $table->foreign('transaction_id')->references('id')->on('transactions');
         });
-        //relationship transactions
-        $table->foreign('transaction_id')->references('id')->on('transactions');
     }
 
     /**
