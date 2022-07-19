@@ -95,7 +95,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'id_ID',
+    'fallback_locale' => 'en',
 
     /*
     |--------------------------------------------------------------------------
@@ -108,7 +108,7 @@ return [
     |
     */
 
-    'faker_locale' => 'en_US',
+    'faker_locale' => 'id_ID',
 
     /*
     |--------------------------------------------------------------------------
@@ -167,6 +167,7 @@ return [
         /*
          * Package Service Providers...
          */
+        App\Providers\FortifyServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -176,7 +177,6 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        App\Providers\FortifyServiceProvider::class,
 
     ],
 
