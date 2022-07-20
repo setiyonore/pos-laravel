@@ -28,7 +28,7 @@ class DashboardController extends Controller
         $week = Carbon::now()->subDays(7);
 
         //chart sales 7 days
-        $chart_sales_week = DB::table('transaction')
+        $chart_sales_week = DB::table('transactions')
             ->addSelect(DB::raw('DATE(created_at) as date, SUM(grand_total) as grand_total'))
             ->where('created_at','>=',$week)
             ->groupBy('date')
@@ -59,7 +59,7 @@ class DashboardController extends Controller
         //chart best selling product
         $chart_best_products = DB::table('transaction_details')
             ->addSelect(DB::raw('products.title as title,SUM(transaction_details.qty) as total'))
-            ->join('product','product.id','=','transaction_details.product_id')
+            ->join('products','products.id','=','transaction_details.product_id')
             ->groupBy('transaction_details.product_id')
             ->orderBy('total','DESC')
             ->limit(5)
