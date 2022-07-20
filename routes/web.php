@@ -13,6 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/',function (){
+    return \Inertia\Inertia::render('Auth/Login');
+})->middleware('guest');
+//prefix "apps"
+Route::prefix('apps')->group(function (){
+    //middleware "auth"
+    Route::group(['middleware' => ['auth']],function (){
+        //route dasboard
+        Route::get('dashboard',App\Http\Controllers\Apps\DashboardController::class)
+            ->name('apps.dasboard');
+    });
 });
