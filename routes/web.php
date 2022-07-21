@@ -23,5 +23,8 @@ Route::prefix('apps')->group(function (){
         //route dasboard
         Route::get('dashboard',App\Http\Controllers\Apps\DashboardController::class)
             ->name('apps.dasboard');
+        //route permissions
+        Route::get('/permissions', \App\Http\Controllers\Apps\PermissionController::class)->name('apps.permissions.index')
+            ->middleware('permission:permissions.index');
     });
 });
