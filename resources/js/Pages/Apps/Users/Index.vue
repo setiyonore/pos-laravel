@@ -1,7 +1,7 @@
 <template>
-    <head>
+    <Head>
         <title>Users - Aplikasi Kasir</title>
-    </head>
+    </Head>
     <main class="c-main">
         <div class="container-fluid">
             <div class="fade-in">
@@ -12,12 +12,12 @@
                                 <span class="font-weight-bold"><i class="fa fa-users"></i> USERS</span>
                             </div>
                             <div class="card-body">
-                                <form  @submit.prevent="handleSearch">
+                                <form @submit.prevent="handleSearch">
                                     <div class="input-group mb-3">
 
                                         <Link href="/apps/users/create" v-if="hasAnyPermission(['users.create'])" class="btn btn-primary input-group-text"> <i class="fa fa-plus-circle me-2"></i> NEW</Link>
 
-                                        <input type="text" class="form-control" placeholder="search by user name...">
+                                        <input type="text" class="form-control" v-model="search" placeholder="search by user name...">
 
                                         <button class="btn btn-primary input-group-text" type="submit"> <i class="fa fa-search me-2"></i> SEARCH</button>
 
@@ -50,50 +50,70 @@
                                 </table>
                                 <Pagination :links="users.links" align="end"/>
                             </div>
-                            <!-- card body -->
                         </div>
-                        <!-- card border-0 rounded-3 shadow border-top-purple -->
                     </div>
-                    <!-- col md 12 -->
                 </div>
-                <!-- row -->
             </div>
-            <!-- fade in -->
         </div>
-        <!-- container fluid -->
     </main>
 </template>
 
 <script>
-import LayoutApp from '../../../Layouts/App.vue';
-import Pagination from '../../../Components/Pagination.vue';
-import { Head,Link } from '@inertiajs/inertia-vue3';
-//import ref from vue
-import { ref } from 'vue';
+    //import layout
+    import LayoutApp from '../../../Layouts/App.vue';
 
-//import inertia adapter
-import { Inertia } from '@inertiajs/inertia';
-export default {
-    layout: LayoutApp,
-    components: {
-        Head,
-        Link,
-        Pagination,
-    },
-    props: {
-        users: Object,
-    },
-    setup() {
-        const search = ref('' || (new URL(document.location)).searchParams.get('q'));
-        const handleSearch = () => {
-            Inertia.get('/apps/users',{
-                q: search.value,
-            });
+    //import component pagination
+    import Pagination from '../../../Components/Pagination.vue';
+
+    //import Heade and Link from Inertia
+    import { Head, Link  } from '@inertiajs/inertia-vue3';
+
+    //import ref from vue
+    import { ref } from 'vue';
+
+    //import inertia adapter
+    import { Inertia } from '@inertiajs/inertia';
+
+    export default {
+        //layout
+        layout: LayoutApp,
+
+        //register component
+        components: {
+            Head,
+            Link,
+            Pagination
+        },
+
+        //props
+        props: {
+            users: Object,
+        },
+
+        setup() {
+
+            //define state search
+            const search = ref('' || (new URL(document.location)).searchParams.get('q'));
+
+            //define method search
+            const handleSearch = () => {
+                Inertia.get('/apps/users', {
+
+                    //send params "q" with value from state "search"
+                    q: search.value,
+                });
+            }
+
+            //return
+            return {
+                search,
+                handleSearch,
+            }
+
         }
-        return {
-            search,
-            handleSearch,
-        }
-    },
-}
+    }
 </script>
+
+<style>
+
+</style>
