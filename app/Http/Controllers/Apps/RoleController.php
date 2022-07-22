@@ -22,7 +22,7 @@ class RoleController extends Controller
 
     public function create()
     {
-        $permission = Permission::all();
+        $permissions = Permission::all();
         return inertia('Apps/Roles/Create',[
             'permissions' => $permissions,
         ]);
@@ -30,14 +30,21 @@ class RoleController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'name' => 'required',
-            'permission' => 'required',
+       /**
+         * Validate request
+         */
+        $this->validate($request, [
+            'name'          => 'required',
+            'permissions'   => 'required',
         ]);
+
         //create role
         $role = Role::create(['name' => $request->name]);
-        //assign permission to role
+
+        //assign permissions to role
         $role->givePermissionTo($request->permissions);
+
+        //redirect
         return redirect()->route('apps.roles.index');
     }
 
