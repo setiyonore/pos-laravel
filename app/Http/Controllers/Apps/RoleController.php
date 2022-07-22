@@ -48,14 +48,13 @@ class RoleController extends Controller
         return redirect()->route('apps.roles.index');
     }
 
-    public function edit($edit)
+    public function edit($id)
     {
         //get role
         $role = Role::with('permissions')->findOrFail($id);
 
         //get permission all
         $permissions = Permission::all();
-
         return inertia('Apps/Roles/Edit',[
             'role' => $role,
             'permissions' =>$permissions,
