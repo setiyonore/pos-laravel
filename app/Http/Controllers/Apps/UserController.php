@@ -23,7 +23,7 @@ class UserController extends Controller
 
     public function create()
     {
-        $roles = Roles::all();
+        $roles = Role::all();
         return Inertia::render('Apps/Users/Create',[
             'roles' => $roles,
         ]);
