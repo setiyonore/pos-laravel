@@ -51,7 +51,7 @@ class UserController extends Controller
         return redirect()->route('apps.users.index');
     }
 
-    public function edit($edit)
+    public function edit($id)
     {
         $user = User::with('roles')->findOrFail($id);
 
