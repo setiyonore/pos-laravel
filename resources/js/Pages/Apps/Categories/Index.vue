@@ -34,8 +34,8 @@
                                             <td>{{ category.name }}</td>
                                             <td class="text-center"><img :src="category.image" width="40"></td>
                                             <td class="text-center">
-                                                <Link rel="stylesheet" href="#" v-if="hasAnyPermission(['categories.edit'])" class="btn btn-success btn-sm"><i class="fa fa-pencil-alt me-1"></i> EDIT</Link>
-                                                <button v-if="hasAnyPermission(['categories.delete'])" class="btn btn-danger"><i class="fa fa-trash"></i> DELETE</button>
+                                                <Link href="#" v-if="hasAnyPermission(['categories.edit'])" class="btn btn-success btn-sm me-2"><i class="fa fa-pencil-alt me-1"></i> EDIT</Link>
+                                                <button v-if="hasAnyPermission(['categories.delete'])" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> DELETE</button>
                                             </td>
                                         </tr>
                                     </tbody>
