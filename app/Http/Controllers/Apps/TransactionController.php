@@ -15,7 +15,7 @@ class TransactionController extends Controller
     public function index()
     {
         $carts = Cart::with('product')->where('cashier_id',auth()->user()->id)->get();
-        $customers = Customer::latest()->paginate(5);
+        $customers = Customer::latest()->get();
         return Inertia::render('Apps/Transactions/Index',[
             'carts' => $carts,
             'carts_total' => $carts->sum('price'),
