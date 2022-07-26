@@ -51,7 +51,7 @@ class CustomerController extends Controller
 
     public function update(Request $request, Customer $customer)
     {
-        $this->validate([
+        $this->validate($request,[
             'name' => 'required',
             'no_telp' => 'required|unique:customers,no_telp,'.$customer->id,
             'address' => 'required',
@@ -63,7 +63,7 @@ class CustomerController extends Controller
             'address' => $request->address,
         ]);
 
-        return redirect()->route('apps.cistomers.index');
+        return redirect()->route('apps.customers.index');
     }
 
     public function destroy($id)
