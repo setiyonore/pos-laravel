@@ -12,18 +12,18 @@
 
                                 <div class="input-group mb-3">
                                     <span class="input-group-text"><i class="fa fa-barcode"></i></span>
-                                    <input type="text" class="form-control" placeholder="Scan or Input Barcode">
+                                    <input type="text" v-model="barcode" @keyup="searchProduct" class="form-control" placeholder="Scan or Input Barcode">
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label fw-bold">Product Name</label>
-                                    <input type="text" class="form-control" placeholder="Product Name" readonly>
+                                    <input type="text" :value="product.title" class="form-control" placeholder="Product Name" readonly>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label fw-bold">Qty</label>
                                     <input type="number" class="form-control text-center" placeholder="Qty" min="1">
                                 </div>
                                 <div class="text-end">
-                                    <button class="btn btn-warning btn-md border-0 shadow text-uppercase mt-3 me-2">CLEAR</button>
+                                    <button @click.prevent="clearSearch" class="btn btn-warning btn-md border-0 shadow text-uppercase mt-3 me-2">CLEAR</button>
                                     <button class="btn btn-success btn-md border-0 shadow text-uppercase mt-3">ADD ITEM</button>
                                 </div>
 
@@ -106,8 +106,11 @@
     import { Head } from '@inertiajs/inertia-vue3';
 
     //import VueMultiselect
-    import VueMultiselect from 'vue-multiselect'
-    import 'vue-multiselect/dist/vue-multiselect.css'
+    import VueMultiselect from 'vue-multiselect';
+    import 'vue-multiselect/dist/vue-multiselect.css';
+    import {ref} from 'vue';
+
+    import axios from 'axios';
 
     export default {
         //layout
@@ -123,6 +126,38 @@
         props: {
             auth: Object,
             customers: Array
+        },
+
+        setup() {
+            const barcode = ref('');
+            const product = ref({});
+            const qty = ref(1);
+
+            const searchProduct = () => {
+                axios.post('/apps/transactions/searchProduct',{
+                    //send data barcode
+                    barcode: barcode.value
+                }).then(response => {
+                    if(response.data.success){
+                        product.value = response.data.data;
+                    } else {
+                        product.value = {};
+                    }
+                })
+            }
+
+            const clearSearch = () => {
+                product.value = {};
+                barcode.value = '';
+            }
+
+            return {
+                barcode,
+                product,
+                searchProduct,
+                clearSearch,
+                qty
+            }
         }
     }
 </script>
