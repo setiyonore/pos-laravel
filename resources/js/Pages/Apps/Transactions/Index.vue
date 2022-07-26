@@ -24,14 +24,19 @@
                                 </div>
                                 <div class="text-end">
                                     <button @click.prevent="clearSearch" class="btn btn-warning btn-md border-0 shadow text-uppercase mt-3 me-2">CLEAR</button>
-                                    <button class="btn btn-success btn-md border-0 shadow text-uppercase mt-3">ADD ITEM</button>
+                                    <button @click.prevent="addToCart" class="btn btn-success btn-md border-0 shadow text-uppercase mt-3">ADD ITEM</button>
                                 </div>
 
                             </div>
                         </div>
                     </div>
                     <div class="col-md-8">
-
+                        <div v-if="session.error" class="alert alert-danger">
+                            {{ session.error }}
+                        </div>
+                        <div v-if="session.success" class="alert alert-success">
+                            {{ session.success }}
+                        </div>
                         <div class="card border-0 rounded-3 shadow border-top-success">
                             <div class="card-body">
                                 <div class="row">
@@ -111,6 +116,7 @@
     import {ref} from 'vue';
 
     import axios from 'axios';
+import { Inertia } from '@inertiajs/inertia';
 
     export default {
         //layout
@@ -126,7 +132,8 @@
         props: {
             auth: Object,
             customers: Array,
-            carts_total: Number
+            carts_total: Number,
+            session: Object,
         },
 
         setup(props) {
@@ -154,6 +161,21 @@
 
             const grandTotal = ref(props.carts_total);
 
+            //method add to cart
+            const addToCart = () => {
+                Inertia.post('/apps/transactions/addToCart',{
+                    product_id: product.value.id,
+                    qty: qty.value,
+                    sell_price: product.value.sell_price,
+                },{
+                    onSuccess: () => {
+                        clearSearch();
+                        qty.value = 1;
+                        grandTotal.value = props.carts_total;
+                    }
+                });
+            }
+
             return {
                 barcode,
                 product,
@@ -161,6 +183,7 @@
                 clearSearch,
                 qty,
                 grandTotal,
+                addToCart,
             }
         }
     }

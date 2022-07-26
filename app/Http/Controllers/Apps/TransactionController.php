@@ -39,7 +39,7 @@ class TransactionController extends Controller
 
     public function addToCart(Request $request)
     {
-        if(Product::where($request->product_id)->first()->stock < $request->qty) {
+        if(Product::whereId($request->product_id)->first()->stock < $request->qty) {
             return redirect()->back()->with('error', 'Out of Stock Product!.');
         }
 
