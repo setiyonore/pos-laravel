@@ -27,7 +27,7 @@ class CustomerController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate([
+        $this->validate($request,[
             'name' => 'required',
             'no_telp' => 'required|unique:customers',
             'address' => 'required',

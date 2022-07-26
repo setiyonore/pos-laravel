@@ -34,8 +34,10 @@
                                             <td>{{ customer.name }}</td>
                                             <td>{{ customer.no_telp }}</td>
                                             <td>{{ customer.address }}</td>
-                                            <Link href="#" v-if="hasAnyPermission(['customers.edit'])" class="btn btn-success btn-sm me-2"><i class="fa fa-pencil-alt me-1"></i> EDIT</Link>
-                                            <button v-if="hasAnyPermission(['customers.delete'])" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> DELETE</button>
+                                            <td class="text-center">
+                                                <Link href="#" v-if="hasAnyPermission(['customers.edit'])" class="btn btn-success btn-sm me-2"><i class="fa fa-pencil-alt me-1"></i> EDIT</Link>
+                                                <button v-if="hasAnyPermission(['customers.delete'])" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> DELETE</button>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
