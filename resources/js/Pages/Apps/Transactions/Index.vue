@@ -20,7 +20,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label fw-bold">Qty</label>
-                                    <input type="number" class="form-control text-center" placeholder="Qty" min="1">
+                                    <input type="number" v-model="qty" class="form-control text-center" placeholder="Qty" min="1">
                                 </div>
                                 <div class="text-end">
                                     <button @click.prevent="clearSearch" class="btn btn-warning btn-md border-0 shadow text-uppercase mt-3 me-2">CLEAR</button>
@@ -39,7 +39,7 @@
                                         <h4 class="fw-bold">GRAND TOTAL</h4>
                                     </div>
                                     <div class="col-md-8 col-8 text-end">
-                                        <h4 class="fw-bold">Rp. 0</h4>
+                                        <h4 class="fw-bold">Rp. {{ formatPrice(grandTotal) }}</h4>
                                     </div>
                                 </div>
                             </div>
@@ -125,10 +125,11 @@
         //props
         props: {
             auth: Object,
-            customers: Array
+            customers: Array,
+            carts_total: Number
         },
 
-        setup() {
+        setup(props) {
             const barcode = ref('');
             const product = ref({});
             const qty = ref(1);
@@ -151,12 +152,15 @@
                 barcode.value = '';
             }
 
+            const grandTotal = ref(props.carts_total);
+
             return {
                 barcode,
                 product,
                 searchProduct,
                 clearSearch,
-                qty
+                qty,
+                grandTotal,
             }
         }
     }
