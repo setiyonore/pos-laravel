@@ -52,6 +52,7 @@
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <label class="fw-bold">Cashier</label>
+                                    <input class="form-control" type="text" :value="auth.user.name" readonly>
                                 </div>
                                 <div class="col-md-6 float-end">
                                     <label class="fw-bold">Customer</label>
@@ -108,6 +109,9 @@ export default {
     layout: LayoutApp,
     components: {
         Head,
+    },
+    props: {
+        auth: Object,
     },
     setup() {
 

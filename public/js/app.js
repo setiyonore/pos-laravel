@@ -20836,6 +20836,9 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     Head: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.Head
   },
+  props: {
+    auth: Object
+  },
   setup: function setup() {}
 });
 
@@ -24680,7 +24683,53 @@ var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 /* HOISTED */
 );
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<main class=\"c-main\"><div class=\"container-fluid\"><div class=\"fade-in\"><div class=\"row\"><div class=\"col-md-4\"><div class=\"card border-0 rounded-3 shadow\"><div class=\"card-body\"><div class=\"input-group mb-3\"><span class=\"input-group-text\"><i class=\"fa fa-barcode\"></i></span><input type=\"text\" class=\"form-control\" placeholder=\"Scan or Input Barcode\"></div><div class=\"mb-3\"><label class=\"form-label fw-bold\">Product Name</label><input type=\"text\" class=\"form-control\" placeholder=\"Product Name\" readonly></div><div class=\"mb-3\"><label class=\"form-label fw-bold\">Qty</label><input type=\"number\" class=\"form-control text-center\" placeholder=\"Qty\" min=\"1\"></div><div class=\"text-end\"><button class=\"btn btn-warning btn-md border-0 shadow text-uppercase mt-3 me-2\">CLEAR</button><button class=\"btn btn-success btn-md border-0 shadow text-uppercase mt-3\">ADD ITEM</button></div></div><!-- card-body --></div><!-- card border-0 rounded-3 shadow --></div><!-- col-md-4 --><div class=\"col-md-8\"><div class=\"card border-0 rounded-3 shadow border-top-success\"><div class=\"card-body\"><div class=\"row\"><div class=\"col-md-4 col-4\"><h4 class=\"fw-bold\">GRAND TOTAL</h4></div><div class=\"col-md-8 col-8 text-end\"><h4 class=\"fw-bold\">Rp. 0</h4></div></div></div></div><!-- card border-0 rounded-3 shadow border-top-success --></div><!-- col-md-8 --><div class=\"card border-0 rounded-3 shadow\"><div class=\"card-body\"><div class=\"row mb-3\"><div class=\"col-md-6\"><label class=\"fw-bold\">Cashier</label></div><div class=\"col-md-6 float-end\"><label class=\"fw-bold\">Customer</label></div></div><!-- row mb-3 --><hr><table class=\"table table-bordered\"><thead><tr style=\"background-color:#e6e6e7;\"><th scope=\"col\">#</th><th scope=\"col\">Product Name</th><th scope=\"col\">Price</th><th scope=\"col\">Qty</th><th scope=\"col\">Sub Total</th></tr></thead><tbody></tbody></table><hr><div class=\"d-flex align-items-end flex-column bd-highlight mb-3\"><div class=\"mt-auto bd-highlight\"><label>Discount (Rp.)</label><input type=\"number\" class=\"form-control\" placeholder=\"Discount (Rp.)\"></div><div class=\"bd-highlight mt-4\"><label>Pay (Rp.)</label><input type=\"number\" class=\"form-control\" placeholder=\"Pay (Rp.)\"></div><div class=\"text-end mt-4\"><button class=\"btn btn-warning btn-md border-0 shadow text-uppercase me-2\">Cancel</button><button class=\"btn btn-purple btn-md border-0 shadow text-uppercase\">Pay Order &amp; Print</button></div></div><!-- d-flex align-items-end flex-column bd-highlight mb-3 --></div><!-- card body --></div><!-- card border-0 rounded-3 shadow --></div><!-- row --></div><!-- fade in --></div><!-- Contianer fluid --></main>", 1);
+var _hoisted_2 = {
+  "class": "c-main"
+};
+var _hoisted_3 = {
+  "class": "container-fluid"
+};
+var _hoisted_4 = {
+  "class": "fade-in"
+};
+var _hoisted_5 = {
+  "class": "row"
+};
+
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col-md-4\"><div class=\"card border-0 rounded-3 shadow\"><div class=\"card-body\"><div class=\"input-group mb-3\"><span class=\"input-group-text\"><i class=\"fa fa-barcode\"></i></span><input type=\"text\" class=\"form-control\" placeholder=\"Scan or Input Barcode\"></div><div class=\"mb-3\"><label class=\"form-label fw-bold\">Product Name</label><input type=\"text\" class=\"form-control\" placeholder=\"Product Name\" readonly></div><div class=\"mb-3\"><label class=\"form-label fw-bold\">Qty</label><input type=\"number\" class=\"form-control text-center\" placeholder=\"Qty\" min=\"1\"></div><div class=\"text-end\"><button class=\"btn btn-warning btn-md border-0 shadow text-uppercase mt-3 me-2\">CLEAR</button><button class=\"btn btn-success btn-md border-0 shadow text-uppercase mt-3\">ADD ITEM</button></div></div><!-- card-body --></div><!-- card border-0 rounded-3 shadow --></div>", 1);
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col-md-8\"><div class=\"card border-0 rounded-3 shadow border-top-success\"><div class=\"card-body\"><div class=\"row\"><div class=\"col-md-4 col-4\"><h4 class=\"fw-bold\">GRAND TOTAL</h4></div><div class=\"col-md-8 col-8 text-end\"><h4 class=\"fw-bold\">Rp. 0</h4></div></div></div></div><!-- card border-0 rounded-3 shadow border-top-success --></div>", 1);
+
+var _hoisted_8 = {
+  "class": "card border-0 rounded-3 shadow"
+};
+var _hoisted_9 = {
+  "class": "card-body"
+};
+var _hoisted_10 = {
+  "class": "row mb-3"
+};
+var _hoisted_11 = {
+  "class": "col-md-6"
+};
+
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "fw-bold"
+}, "Cashier", -1
+/* HOISTED */
+);
+
+var _hoisted_13 = ["value"];
+
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "col-md-6 float-end"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "fw-bold"
+}, "Customer")], -1
+/* HOISTED */
+);
+
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<hr><table class=\"table table-bordered\"><thead><tr style=\"background-color:#e6e6e7;\"><th scope=\"col\">#</th><th scope=\"col\">Product Name</th><th scope=\"col\">Price</th><th scope=\"col\">Qty</th><th scope=\"col\">Sub Total</th></tr></thead><tbody></tbody></table><hr><div class=\"d-flex align-items-end flex-column bd-highlight mb-3\"><div class=\"mt-auto bd-highlight\"><label>Discount (Rp.)</label><input type=\"number\" class=\"form-control\" placeholder=\"Discount (Rp.)\"></div><div class=\"bd-highlight mt-4\"><label>Pay (Rp.)</label><input type=\"number\" class=\"form-control\" placeholder=\"Pay (Rp.)\"></div><div class=\"text-end mt-4\"><button class=\"btn btn-warning btn-md border-0 shadow text-uppercase me-2\">Cancel</button><button class=\"btn btn-purple btn-md border-0 shadow text-uppercase\">Pay Order &amp; Print</button></div></div>", 4);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
@@ -24692,7 +24741,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  }), _hoisted_2], 64
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("main", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" col-md-4 "), _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" col-md-8 "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "class": "form-control",
+    type: "text",
+    value: $props.auth.user.name,
+    readonly: ""
+  }, null, 8
+  /* PROPS */
+  , _hoisted_13)]), _hoisted_14]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" row mb-3 "), _hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" d-flex align-items-end flex-column bd-highlight mb-3 ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" card body ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" card border-0 rounded-3 shadow ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" row ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" fade in ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Contianer fluid ")])], 64
   /* STABLE_FRAGMENT */
   );
 }
