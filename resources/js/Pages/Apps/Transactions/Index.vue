@@ -106,7 +106,7 @@
                                 </div>
                                 <div class="text-end mt-4">
                                     <button class="btn btn-warning btn-md border-0 shadow text-uppercase me-2">Cancel</button>
-                                    <button class="btn btn-purple btn-md border-0 shadow text-uppercase" :disabled="cash < grandTotal || grandTotal == 0">Pay Order & Print</button>
+                                    <button @click.prevent="storeTransaction" class="btn btn-purple btn-md border-0 shadow text-uppercase" :disabled="cash < grandTotal || grandTotal == 0">Pay Order & Print</button>
                                 </div>
                             </div>
                         </div>
@@ -132,7 +132,8 @@
     import {ref} from 'vue';
 
     import axios from 'axios';
-import { Inertia } from '@inertiajs/inertia';
+    import { Inertia } from '@inertiajs/inertia';
+    import Swal from 'sweetalert2';
 
     export default {
         //layout
@@ -218,7 +219,49 @@ import { Inertia } from '@inertiajs/inertia';
             const setChange = () => {
                 change.value = cash.value - grandTotal.value;
             }
+            //define state "customer_id"
+            const customer_id = ref('');
+            //method store transaction
+            const storeTransaction = () => {
+                axios.post('/apps/transactions/store',{
+                    //send data to server
+                    customer_id: customer_id.value ? customer_id.value.id : '',
+                    discount: discount.value,
+                    grand_total: grandTotal.value,
+                    cash: cash.value,
+                    change: change.value
+                })
+                .then(response => {
+                    clearSearch();
+                    //set qty to "1"
+                    qty.value = 1;
+                    //set grandTotal
+                    grandTotal.value = props.carts_total;
+                    //set cash to "0"
+                    cash.value = 0;
+                    //set change to "0"
+                    change.value = 0;
+                    //set customer_id to ""
+                    customer_id.value = '';
+                    //show success alert
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Transaction Successfully.',
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+                    .then(() => {
+                        setTimeout(() => {
+                            //print
+                            window.open(`/apps/transactions/print?invoice=${response.data.data.invoice}`, '_blank');
+                            //reload page
+                            location.reload();
+                        },50);
+                    })
 
+                })
+            }
             return {
                 barcode,
                 product,
@@ -233,6 +276,8 @@ import { Inertia } from '@inertiajs/inertia';
                 discount,
                 setDiscount,
                 setChange,
+                customer_id,
+                storeTransaction
             }
         }
     }

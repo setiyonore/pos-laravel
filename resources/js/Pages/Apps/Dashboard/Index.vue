@@ -72,8 +72,8 @@
                                         </li>
                                     </ol>
                                 </div>
-                                <div v-else class="alert alert-danger border-0 shadow rounded-3">
-                                    Data Tidak Tersedia!.
+                                <div v-else class="alert alert-success border-0 shadow rounded-3">
+                                    Stok produk masih tersedia!.
                                 </div>
                             </div>
                         </div>
