@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Apps;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ProfitsExport;
 use App\Models\Profit;
 
 class ProfitController extends Controller
@@ -31,5 +33,10 @@ class ProfitController extends Controller
             'profits' => $profits,
             'total' => (int) $total,
         ]);
+    }
+
+    public function export(Request $request)
+    {
+        return Excel::download(new ProfitsExport($request->start_date, $request->end_date), 'profits : '.$request->start_date.' — '.$request->end_date.'.xlsx');
     }
 }
