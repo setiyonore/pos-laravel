@@ -97,7 +97,7 @@
                                 <div class="d-flex align-items-end flex-column bd-highlight mb-3">
                                     <div class="mt-auto bd-highlight">
                                         <label>Discount (Rp.)</label>
-                                        <input v-model="discount" @keyup="setiDiscount" type="number" class="form-control" placeholder="Discount (Rp.)">
+                                        <input v-model="discount" @keyup="setDiscount" type="number" class="form-control" placeholder="Discount (Rp.)">
                                     </div>
                                     <div class="bd-highlight mt-4">
                                         <label>Pay (Rp.)</label>

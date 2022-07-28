@@ -24943,7 +24943,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return $setup.form.no_telp = $event;
     }),
-    type: "number",
+    type: "text",
     placeholder: "No. Telp"
   }, null, 2
   /* CLASS */
@@ -25122,7 +25122,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return $setup.form.no_telp = $event;
     }),
-    type: "number",
+    type: "text",
     placeholder: "No. Telp"
   }, null, 2
   /* CLASS */
@@ -27900,7 +27900,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.discount = $event;
     }),
     onKeyup: _cache[7] || (_cache[7] = function () {
-      return _ctx.setiDiscount && _ctx.setiDiscount.apply(_ctx, arguments);
+      return $setup.setDiscount && $setup.setDiscount.apply($setup, arguments);
     }),
     type: "number",
     "class": "form-control",
