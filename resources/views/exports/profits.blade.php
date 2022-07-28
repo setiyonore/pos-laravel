@@ -1,6 +1,6 @@
 <div class="title" style="padding-bottom: 13px">
     <div style="text-align: center;text-transform: uppercase;font-size: 15px">
-        SantriKoding
+        Toko ABC DEF
     </div>
     <div style="text-align: center">
         Alamat: Desa Gedangalas, Kec. Gajah, Kab. Demak
